@@ -31,7 +31,7 @@ module "eks" {
   access_entries = {
     # One access entry with a policy associated
     example = {
-      principal_arn = "arn:aws:iam::876997124628:user/terraform"
+      principal_arn = "arn:aws:iam::242201303478:user/terraform-developer"
 
       policy_associations = {
         example = {
@@ -70,7 +70,7 @@ module "eks" {
   }
 
   vpc_id                   = module.vpc.vpc_id
-  subnet_ids               = module.vpc.public_subnets
+  subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
   # EKS Managed Node Group(s)
@@ -90,7 +90,7 @@ module "eks" {
     tws-demo-ng = {
       min_size     = 1
       max_size     = 3
-      desired_size = 1
+      desired_size = 3
 
       instance_types = ["t3.large"]
       capacity_type  = "SPOT"
