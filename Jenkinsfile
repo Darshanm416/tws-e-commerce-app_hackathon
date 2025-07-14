@@ -86,7 +86,7 @@ pipeline {
                             docker_push(
                                 imageName: env.DOCKER_IMAGE_NAME,
                                 imageTag: env.DOCKER_IMAGE_TAG,
-                                credentials: 'docker-hub-credentials'
+                                credentials: 'dockerhub-cred'
                             )
                         }
                     }
@@ -113,9 +113,9 @@ pipeline {
                     update_k8s_manifests(
                         imageTag: env.DOCKER_IMAGE_TAG,
                         manifestsPath: 'kubernetes',
-                        gitCredentials: 'github-credentials',
+                        gitCredentials: 'github-cred',
                         gitUserName: 'Jenkins CI',
-                        gitUserEmail: 'idarshankm@gmail.com'
+                        gitUserEmail: 'jenkins@darshanm.space'
                     )
                 }
             }
